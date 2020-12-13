@@ -1,0 +1,70 @@
+{
+	"$schema": "https://json-schema.org/draft/2019-09/schema",
+    "title": "UnoConfig",
+    "description": "A configuration of the Uno Game",
+    "type": "object",
+    "properties": {
+      "id": {
+        "description": "The unique identifier of a configuration",
+        "type": "integer"
+      },
+      "talon": {
+         "descriprion": "Where you put your cards after you played",
+         "nombre_de_cartes": {
+          	"type": "integer",
+            "enum": [1,4]
+          	
+         }
+      },
+      "duree_tour": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "regles_speciales": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": ["cumul_+2","cumul_+4","suite_classique","suite_royale","interception","+4_ou_rien"]
+          }
+      },
+      "main": {
+        "est_visible": {
+          "type": "boolean"
+        },
+        "nombre_de_piles": {
+          "type": "integer",
+          "enum": [1,3]
+        },
+        "required": ["est_visible", "nombre_de_piles"]
+      },
+      "cartes_speciales": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": ["carte_uno","+_4_non_contestable","0_special","7_special"]
+        }
+      }
+    },
+    "oneOf": [
+        {
+            "type": "object",
+            "properties": {
+                "nb_pioche":   { "type": "integer", "const": 1 },
+                "peut_jouer_apres_pioche": { "type": "boolean" }
+            },
+            "required": ["nb_pioche", "peut_jouer_apres_pioche" ]
+        },
+        {
+            "type": "object",
+            "properties": {
+                "nb_pioche":   { "type": "integer", "const": 3 }
+            },
+            "required": [ "nb_pioche" ]
+        }
+    ],
+    "required":["id", "talon", "main"],
+
+     
+}

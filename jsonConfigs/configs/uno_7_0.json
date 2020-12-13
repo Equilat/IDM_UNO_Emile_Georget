@@ -1,0 +1,13 @@
+{
+	"id":1,
+    "talon": {
+       "nombre_de_cartes": 1
+     },
+     "main": {
+       "est_visible": false,
+       "nombre_de_piles": 1
+     },
+     "cartes_speciales" : ["0_special","7_special"],
+     "nb_pioche": 1,
+     "peut_jouer_apres_pioche": true
+}

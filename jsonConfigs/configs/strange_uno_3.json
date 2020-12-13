@@ -1,0 +1,15 @@
+{
+	"id":2,
+    "talon": {
+       "nombre_de_cartes": 4
+     },
+     "main": {
+       "est_visible": true,
+       "nombre_de_piles": 3
+     },
+     "duree_tour": 30,
+     "regles_speciales" : ["cumul_+2","cumul_+4","suite_classique","suite_royale","interception","+4_ou_rien"],
+     "cartes_speciales" : ["carte_uno","+_4_non_contestable","0_special","7_special"],
+     "nb_pioche": 1,
+     "peut_jouer_apres_pioche": true
+}

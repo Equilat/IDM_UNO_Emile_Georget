@@ -1,0 +1,8 @@
+{
+	"id":3,
+    "talon": {
+       "nombre_de_cartes": 1
+     },
+     "nb_pioche": 1,
+     "peut_jouer_apres_pioche": true
+}
