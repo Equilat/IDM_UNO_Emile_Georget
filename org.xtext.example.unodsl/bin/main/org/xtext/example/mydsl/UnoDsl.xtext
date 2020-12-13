@@ -1,0 +1,69 @@
+grammar org.xtext.example.mydsl.UnoDsl with org.eclipse.xtext.common.Terminals
+
+generate unoDsl "http://www.xtext.org/example/mydsl/UnoDsl"
+
+Model:
+	'<UnoConfig>' unoRules+=UnoConfig '</UnoConfig>';
+	
+UnoConfig:
+	('<TalonJeu' 'nbCartes' '=' nbCartesTalon=NbCartesTalon'/>')
+	&(tempsLimite = TempsLimite?)
+	&(deposeCartes = DeposeCartes?)
+	&('<Main' 'visibilite' '=' visibilite = Visibilite 'nombreDePiles' '=' nombreDePiles = NombreDePiles '/>')
+	&(cartesSpeciales = CartesSpeciales?)
+	&('<Pioche>' nombreDePioches= NombreDePioches '</Pioche>')
+;
+
+enum NbCartesTalon:
+	uneCarteTalon = '1' | quatreCartesTalon = '4'
+;
+
+TempsLimite:
+	'<DureeTour' 'duree' '=' (INT|'0'|'1') '/>'
+;
+
+DeposeCartes: 
+	'<ReglesSpeciales>' 
+		enumReglesDeposeCartes+=EnumReglesDeposeCartes
+	'</ReglesSpeciales>'
+;
+
+
+
+EnumReglesDeposeCartes:
+	('<Regle>' cumulPlusDeux = 'cumul_+2' '</Regle>')?
+&	('<Regle>' cumulPlusQuatre = 'cumul_+4' '</Regle>')?
+&	('<Regle>' suiteClassique = 'suite_classique' '</Regle>')?
+&	('<Regle>' suiteRoyale = 'suite_royale' '</Regle>')?
+&	('<Regle>' interception = 'interception' '</Regle>')?
+&	('<Regle>' plus4OuRien = '+4_ou_rien' '</Regle>')?
+;
+
+Visibilite:
+	visible = 'visible' | invisible = 'invisible'
+;
+
+NombreDePiles:
+	'1'|'3'
+;
+
+CartesSpeciales:
+	'<CartesSpeciales>'
+		enumCartes+=EnumCartes
+	'</CartesSpeciales>'
+;
+
+EnumCartes: 
+	('<Carte>' carteUno = 'carte_uno' '</Carte>')?
+&	('<Carte>' plusQuatreNonContestable = '+4_non_contestable' '</Carte>')?
+& 	('<Carte>' carteZero = '0_special' '</Carte>')?
+& 	('<Carte>' carteSept =  '7_special' '</Carte>')?
+;
+
+NombreDePioches: 
+	uneFois = '1' peutJouer = PeutJouer | troisFois = '3'
+;
+
+PeutJouer:
+	peutJouerEnsuite = 'peut_jouer_ensuite' | peutPasJouerEnsuite = 'peut_pas_jouer_ensuite'
+;

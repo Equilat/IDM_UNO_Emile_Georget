@@ -1,0 +1,41 @@
+grammar org.xtext.example.mydsl.UnoDsl with org.eclipse.xtext.common.Terminals
+
+generate unoDsl "http://www.xtext.org/example/mydsl/UnoDsl"
+
+Model:
+	unoRules+=UnoConfig*;
+	
+UnoConfig:
+	'<UnoConfig>' name=ID
+	'<TalonJeu' 'nbCartes' '=' nbCartesTalon=NbCartesTalon'/>'
+	tempsLimite = TempsLimite?
+	deposeCartes = DeposeCartes?
+	'<Main' 'visibilité' '=' visibilite = Visibilite
+
+	;
+
+enum NbCartesTalon:
+	uneCarteTalon = '1' | quatreCartesTalon = '4'
+;
+
+TempsLimite:
+	'<TempsLimite/>'
+;
+
+DeposeCartes: 
+	'<ReglesSpeciales>' 
+		regleDeposeCarte+=RegleDeposeCarte
+	'</ReglesSpeciales>'
+;
+
+RegleDeposeCarte: 
+	'<Regle>' enumReglesDeposeCarte=EnumRegleDeposeCarte '</Regle>'
+;
+
+EnumRegleDeposeCarte:
+	cumulPlusDeux = 'Cumul' '+2' name=ID | cumulPlus4 = 'Cumul' '+4' name=ID | suiteClassique = 'Suite' 'classique' | suiteRoyale = 'Suite' 'royale' | interception = 'Interception' | plusQuatreOuRien = 'Plus' '4' 'ou' 'rien' 
+;
+
+Visibilite:
+	visible = 'Visible' | invisible = 'Invisible'
+;

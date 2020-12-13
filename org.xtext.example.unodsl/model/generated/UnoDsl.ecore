@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="unoDsl" nsURI="http://www.xtext.org/example/mydsl/UnoDsl" nsPrefix="unoDsl">
+  <eClassifiers xsi:type="ecore:EClass" name="Model">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unoRules" upperBound="-1"
+        eType="#//UnoConfig" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UnoConfig">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nbCartesTalon" eType="#//NbCartesTalon"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tempsLimite" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deposeCartes" eType="#//DeposeCartes"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="visibilite" eType="#//Visibilite"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nombreDePiles" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cartesSpeciales" eType="#//CartesSpeciales"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nombreDePioches" eType="#//NombreDePioches"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="NbCartesTalon">
+    <eLiterals name="uneCarteTalon" literal="1"/>
+    <eLiterals name="quatreCartesTalon" value="1" literal="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DeposeCartes">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="enumReglesDeposeCartes"
+        upperBound="-1" eType="#//EnumReglesDeposeCartes" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EnumReglesDeposeCartes">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cumulPlusDeux" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cumulPlusQuatre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="suiteClassique" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="suiteRoyale" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="interception" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="plus4OuRien" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Visibilite">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visible" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="invisible" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CartesSpeciales">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="enumCartes" upperBound="-1"
+        eType="#//EnumCartes" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EnumCartes">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="carteUno" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="plusQuatreNonContestable"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="carteZero" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="carteSept" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NombreDePioches">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uneFois" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="peutJouer" eType="#//PeutJouer"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="troisFois" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PeutJouer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="peutJouerEnsuite" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="peutPasJouerEnsuite" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>
